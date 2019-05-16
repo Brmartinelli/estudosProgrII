@@ -38,10 +38,20 @@ public class Cliente {
 
 						System.out.print("Terminal >> ");
 						comando = console.nextLine();
+						if (comando.equals("ls")) {
+							do {
+								toServer.println(comando);
+								toServer.flush();
+								String resposta = fromServer.nextLine();
+								System.out.println("Resposta  " + resposta);
+								
+							} while (!fromServer.nextLine().equals("acabou"));
+						}
 						toServer.println(comando);
 						toServer.flush();
 						String resposta = fromServer.nextLine();
 						System.out.println("Resposta  " + resposta);
+
 					} while (!comando.equals("sair"));
 					System.out.println("Desconectou do Servidor");
 					conexao = false;
