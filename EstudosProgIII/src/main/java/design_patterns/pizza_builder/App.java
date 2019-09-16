@@ -11,6 +11,6 @@ public class App {
 		System.out.println(pizza.getMetade2());
 		
 		Cliente p = new Cliente();
-		p.setNome("Rafael Junior").setIdade(22);
+		p.setNome("Rafael Junior").setIdade(22); 
 	}
 }
