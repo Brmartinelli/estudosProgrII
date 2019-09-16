@@ -30,12 +30,16 @@ public class Servidor {
 				PrintWriter toClient = new PrintWriter(client.getOutputStream());
 				String responseFromClient = " ";
 				do {
-					responseFromClient = " ";
+					
 					responseFromClient = fromClient.nextLine();
 					if (responseFromClient.equals("ls")) {
 						percorresRecursivo(raiz, " ", toClient);
 						toClient.println("acabou");
 						toClient.flush();
+					}else {
+						if(responseFromClient.equals("mkdir")) {
+							
+						}
 					}
 
 					toClient.println("no servidor -> " + responseFromClient);

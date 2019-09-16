@@ -34,6 +34,7 @@ public class Cliente {
 					Socket server = new Socket("localhost", 9098);
 					PrintWriter toServer = new PrintWriter(server.getOutputStream());
 					Scanner fromServer = new Scanner(server.getInputStream());
+					String resposta = " ";
 					do {
 
 						System.out.print("Terminal >> ");
@@ -42,14 +43,21 @@ public class Cliente {
 							do {
 								toServer.println(comando);
 								toServer.flush();
-								String resposta = fromServer.nextLine();
+								resposta = fromServer.nextLine();
 								System.out.println("Resposta  " + resposta);
 								
 							} while (!fromServer.nextLine().equals("acabou"));
+						}else {
+							if (comando.equals("mkdir")) {
+								toServer.println(comando);
+								toServer.flush();
+								resposta = fromServer.nextLine();
+								System.out.println("Resposta " + resposta);
+							}
 						}
 						toServer.println(comando);
 						toServer.flush();
-						String resposta = fromServer.nextLine();
+						 resposta = fromServer.nextLine();
 						System.out.println("Resposta  " + resposta);
 
 					} while (!comando.equals("sair"));
